@@ -1,16 +1,12 @@
 ---
-import { getCollection } from "astro:content";
-import { siteConfig } from "../config/site-config";
+import BlogPost from "../components/BlogPost.astro";
 import Layout from "../layouts/Layout.astro";
-import TypedBlogPost from "src/components/TypedBlogPost.astro";
 
 // Obtiene todos los posts de la carpeta posts (md, mdx) y los guarda en la variable posts. Astro.glob() estará deprecado en el futuro.
-// const posts = await Astro.glob("./posts/*.{md,mdx}");
+const posts = await Astro.glob("./posts-old/*.{md,mdx}");
 
 // Obtiene todos los posts de la carpeta posts (md, mdx) y los guarda en la variable postsNewWay. Recomendado por Astro.
 // const postsNewWay = Object.values(import.meta.glob("./posts/*.{md,mdx}"));
-
-const blogPosts = await getCollection("blog");
 ---
 
 <Layout title="Francisco's Blog">
@@ -20,11 +16,11 @@ const blogPosts = await getCollection("blog");
       <h1
         class="text-3xl font-semibold text-gray-800 capitalize lg:text-4xl dark:text-white"
       >
-        {siteConfig.title}
+        From the blog
       </h1>
 
       <div class="grid grid-cols-1 gap-8 mt-8 md:mt-16 md:grid-cols-2">
-        {blogPosts.map((post) => <TypedBlogPost post={post} />)}
+        {posts.map((post) => <BlogPost {...post} />)}
       </div>
     </div>
   </section>
