@@ -21,7 +21,7 @@ const { Content, headings } = await post.render();
 
 <BlogLayout title={frontmatter.title}>
   <h1 class="text-xs text-gray-500 mb-0">{frontmatter.title}</h1>
-  <h1 class="text-md text-gray-400 mb-0">{frontmatter.author}</h1>
+  <h2 class="text-md text-gray-400 mb-0">{frontmatter.author}</h2>
 
   <Image
     src={frontmatter.image}
